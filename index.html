@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para a minha princesinha</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Pinyon+Script&family=Quicksand:wght@400;500;600;700&display=swap');
+
+  :root{
+    --blush: #fbe7ef;
+    --rose: #f3c8dc;
+    --mauve: #d98ab0;
+    --deep: #a4457a;
+    --wine: #7a2f5c;
+    --cream: #fffaf7;
+    --gold: #d4a259;
+
+    /* cores vivas de cada seção */
+    --c1-vivid: #ff5f96;
+    --c1-deep: #d61e6c;
+    --c2-vivid: #ff8a3d;
+    --c2-deep: #e2571a;
+    --c3-vivid: #a855d9;
+    --c3-deep: #7a1fb0;
+    --finale-vivid: #ff3d7a;
+    --finale-deep: #c81858;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(255,255,255,0.6), transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(255,255,255,0.35), transparent 45%),
+      linear-gradient(165deg, #fdf1f5 0%, #f8dde9 35%, #ecc3dc 70%, #ddadd0 100%);
+    font-family: 'Quicksand', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    color: #5c3350;
+  }
+
+  /* ambient layer */
+  .sky { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .star {
+    position: absolute;
+    color: var(--mauve);
+    opacity: 0.55;
+    animation: twinkle 4s infinite ease-in-out;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.15; transform: scale(0.75); }
+    50% { opacity: 0.85; transform: scale(1.15); }
+  }
+
+  .petal {
+    position: absolute;
+    top: -40px;
+    font-size: 16px;
+    opacity: 0.6;
+    animation: fall linear infinite;
+    color: var(--mauve);
+  }
+  @keyframes fall {
+    0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.5; }
+    100% { transform: translateY(110vh) rotate(340deg) translateX(30px); opacity: 0; }
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 70px 26px 120px;
+    text-align: center;
+  }
+
+  /* header ornament */
+  .ornament-top {
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: var(--mauve);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    opacity: 0.85;
+  }
+
+  .crown-wrap { position: relative; display: inline-block; margin-bottom: 4px; }
+  .crown {
+    font-size: 58px;
+    display: inline-block;
+    animation: float 4.5s ease-in-out infinite;
+    filter: drop-shadow(0 8px 16px rgba(164,69,122,0.35));
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-4deg); }
+    50% { transform: translateY(-14px) rotate(4deg); }
+  }
+  .crown-glow {
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle, rgba(255,224,240,0.9), transparent 70%);
+    filter: blur(6px);
+    z-index: -1;
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 0.5; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 3.2rem;
+    line-height: 1.15;
+    background: linear-gradient(120deg, #ff5f96 0%, #d61e6c 35%, #a855d9 70%, #ff8a3d 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 18px 0 14px;
+    letter-spacing: 0.5px;
+    filter: drop-shadow(0 3px 14px rgba(217,60,140,0.28));
+  }
+
+  .subtitle {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 1.9rem;
+    color: var(--finale-deep);
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .ornament-bottom {
+    margin: 20px auto 46px;
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    position: relative;
+  }
+  .ornament-bottom::after {
+    content: '✦';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    color: var(--gold);
+    font-size: 12px;
+    background: transparent;
+  }
+
+  .hint {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--mauve);
+    margin: 6px 0 36px;
+    letter-spacing: 0.5px;
+  }
+
+  /* cards */
+  .card {
+    background: linear-gradient(160deg, rgba(255,255,255,0.75), rgba(255,255,255,0.45));
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 26px;
+    padding: 36px 30px;
+    margin: 30px 0;
+    box-shadow: 0 14px 36px rgba(164,69,122,0.14), inset 0 1px 0 rgba(255,255,255,0.9);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.4s ease;
+    user-select: none;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px; height: 100%;
+    background: linear-gradient(180deg, var(--gold), var(--mauve));
+    opacity: 0.7;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 20px 44px rgba(164,69,122,0.22); }
+  .card:active { transform: scale(0.98); }
+
+  .card .eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .card h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 1.75rem;
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+  }
+
+  .card .icon { font-size: 1.35rem; margin-right: 8px; }
+
+  .card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    line-height: 1.85;
+    color: #5c3350;
+    font-weight: 500;
+  }
+
+  .tap-tag {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.8;
+  }
+
+  /* cores vivas por cartão */
+  .card[data-msg="1"]::before { background: linear-gradient(180deg, var(--c1-vivid), var(--c1-deep)); }
+  .card[data-msg="1"] .eyebrow,
+  .card[data-msg="1"] .tap-tag { color: var(--c1-deep); }
+  .card[data-msg="1"] h2 { color: var(--c1-deep); }
+
+  .card[data-msg="2"]::before { background: linear-gradient(180deg, var(--c2-vivid), var(--c2-deep)); }
+  .card[data-msg="2"] .eyebrow,
+  .card[data-msg="2"] .tap-tag { color: var(--c2-deep); }
+  .card[data-msg="2"] h2 { color: var(--c2-deep); }
+
+  .card[data-msg="3"]::before { background: linear-gradient(180deg, var(--c3-vivid), var(--c3-deep)); }
+  .card[data-msg="3"] .eyebrow,
+  .card[data-msg="3"] .tap-tag { color: var(--c3-deep); }
+  .card[data-msg="3"] h2 { color: var(--c3-deep); }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 56px 0 46px;
+    color: var(--mauve);
+    font-size: 1.1rem;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* finale */
+  .finale {
+    margin-top: 20px;
+    padding: 54px 34px;
+    border-radius: 32px;
+    background:
+      radial-gradient(circle at 15% 0%, rgba(255,255,255,0.5), transparent 50%),
+      linear-gradient(165deg, #fbdcec, #f0bfe0 60%, #e0a9d4);
+    box-shadow: 0 24px 60px rgba(164,69,122,0.28), inset 0 1px 0 rgba(255,255,255,0.6);
+    position: relative;
+    overflow: hidden;
+  }
+  .finale::before {
+    content: '❁';
+    position: absolute;
+    top: 18px; left: 22px;
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.5);
+  }
+  .finale::after {
+    content: '❁';
+    position: absolute;
+    bottom: 18px; right: 22px;
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .finale .eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--finale-deep);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .finale h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 2.6rem;
+    background: linear-gradient(120deg, var(--finale-vivid), var(--finale-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 28px;
+    letter-spacing: 0.4px;
+  }
+
+  .finale p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.42rem;
+    line-height: 1.9;
+    color: #5c2947;
+    margin-bottom: 22px;
+    font-weight: 500;
+  }
+
+  .signature {
+    margin-top: 32px;
+    font-family: 'Pinyon Script', cursive;
+    font-size: 2.1rem;
+    color: var(--finale-deep);
+    letter-spacing: 0.5px;
+  }
+
+  .signature span {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.08rem;
+    color: var(--wine);
+    margin-top: 10px;
+    letter-spacing: 0.3px;
+  }
+
+  /* final box */
+  .final-box {
+    margin: 60px auto 0;
+    max-width: 480px;
+    padding: 40px 30px;
+    border: 1.5px solid rgba(217,162,89,0.5);
+    border-radius: 26px;
+    background: linear-gradient(160deg, rgba(255,255,255,0.55), rgba(255,255,255,0.25));
+    position: relative;
+  }
+  .final-box::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(217,162,89,0.3);
+    border-radius: 20px;
+    pointer-events: none;
+  }
+
+  .final-box h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.9rem;
+    background: linear-gradient(120deg, var(--c2-vivid), var(--c3-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    letter-spacing: 0.3px;
+  }
+
+  .final-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    line-height: 1.9;
+    color: #5c3350;
+    font-weight: 500;
+  }
+
+  footer {
+    margin-top: 54px;
+    font-family: 'Pinyon Script', cursive;
+    font-size: 1.5rem;
+    color: var(--mauve);
+    opacity: 0.9;
+  }
+
+  /* click effects */
+  .heart-pop {
+    position: fixed;
+    pointer-events: none;
+    font-size: 24px;
+    z-index: 999;
+    animation: popUp 1.2s ease-out forwards;
+    filter: drop-shadow(0 2px 6px rgba(164,69,122,0.4));
+  }
+  @keyframes popUp {
+    0% { transform: translate(-50%,-50%) scale(0.3) rotate(-10deg); opacity: 1; }
+    60% { transform: translate(-50%, -150%) scale(1.25) rotate(8deg); opacity: 1; }
+    100% { transform: translate(-50%, -230%) scale(0.85) rotate(0deg); opacity: 0; }
+  }
+
+  .sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 998;
+    animation: sparkleFade 1s ease-out forwards;
+    font-size: 13px;
+  }
+  @keyframes sparkleFade {
+    0% { transform: translate(-50%,-50%) scale(0.2) rotate(0deg); opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.1) rotate(200deg); opacity: 0; }
+  }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 2.3rem; }
+    .finale h2 { font-size: 1.9rem; }
+    .card p, .finale p, .final-box p { font-size: 1.15rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .crown, .heart-pop, .sparkle, .star, .petal, .crown-glow { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sky" id="sky"></div>
+
+<div class="container">
+
+  <div class="ornament-top">um cantinho só nosso</div>
+
+  <div class="crown-wrap">
+    <div class="crown-glow"></div>
+    <div class="crown">👑</div>
+  </div>
+
+  <h1>Para a minha<br>princesinha</h1>
+  <p class="subtitle">escrito com toda a saudade que cabe em mim</p>
+  <div class="ornament-bottom"></div>
+
+  <p class="hint">toque em cada cartão, meu amor ✧</p>
+
+  <div class="card" data-msg="1">
+    <span class="eyebrow">primeira lembrança</span>
+    <h2><span class="icon">💤</span>Nossas sonequinhas</h2>
+    <p>Sabe o que eu mais sinto falta? Do seu corpinho quentinho encostado no meu, das nossas sonecas de tarde que pareciam durar segundos e ao mesmo tempo o mundo inteiro. Eu queria estar aí agora, só pra te abraçar até você cochilar.</p>
+    <span class="tap-tag">toque para sentir de novo</span>
+  </div>
+
+  <div class="card" data-msg="2">
+    <span class="eyebrow">segunda lembrança</span>
+    <h2><span class="icon">🎈</span>Nossas brincadeiras</h2>
+    <p>Ninguém me faz rir como você. Cada brincadeira boba nossa vira a melhor lembrança do meu dia. Essa semana sem você foi cheia de silêncio onde deveria ter a sua risada.</p>
+    <span class="tap-tag">toque para lembrar de novo</span>
+  </div>
+
+  <div class="card" data-msg="3">
+    <span class="eyebrow">terceira lembrança</span>
+    <h2><span class="icon">💌</span>Nossas declarações</h2>
+    <p>Eu podia escrever mil mensagens, mas nada substitui olhar nos seus olhos e te dizer o quanto eu te amo. Guarda esse carinho, porque assim que a gente se ver, eu vou te falar de novo, bem de pertinho, daquele jeitinho que a nene dengosinha amaaaaa.</p>
+    <span class="tap-tag">toque para guardar esse carinho</span>
+  </div>
+
+  <div class="divider">✧ ✦ ✧</div>
+
+  <div class="finale">
+    <span class="eyebrow">para você, inteira</span>
+    <h2>Minha princesinha,</h2>
+    <p>Faz um tempo doloroso que eu naum vejo a minha nene dengosinha que eu amo tanto, e cada dia parece mais longo que o outro. Você não faz ideia do tamanho da saudade que eu sinto — do seu jeitinho dengoso, do seu abraço, do seu cheiro, dos seus beijinhos gotosos, dos nossos corpinhos quentinhos agarradinhos na caminha enquanto falamos nossas declarações mais profundas.</p>
+    <p>Essas férias tão distantes de você me fizeram entender ainda mais o tamanho do que eu sinto. Não é só saudade, é vontade de viver cada detalhe do nosso dia a dia de novo: nossas sonecas, nossas risadas, nossos beijos, nosso silêncio confortável que só a gente entende.</p>
+    <p>Guarda esse recadinho com carinho, porque cada palavra aqui é verdadeira. Eu te amo mais do que qualquer texto seria capaz de dizer, e essa distância só está deixando o nosso reencontro ainda mais especial.</p>
+    <div class="signature">com todo o meu amor, sempre seu
+      <span>hoje, amanhã e em todos os dias que faltam pra te ver</span>
+    </div>
+  </div>
+
+  <div class="final-box">
+    <h3>Logo logo, minha querida princesa...</h3>
+    <p>...eu vou estar aí, com você nos meus braços de novo. Até lá, essa página é o meu jeito de te abraçar à distância. Eu te amo muuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu      
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu      
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu      
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu      
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+      uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuito, minha querida nene pincesa linda, perfeita, maravilhosa, dengosa, gotosaaa, cheirosa, charmosa... 👑💕</p>
+  </div>
+
+  <footer>feito à mão, com todo meu amor e carinho, só pra você ✧</footer>
+</div>
+
+<script>
+  const sky = document.getElementById('sky');
+  const vividColors = ['#ff5f96','#ff8a3d','#a855d9','#ff3d7a','#d4a259','#e2571a'];
+
+  const starSymbols = ['✦','✧','⋆','✩'];
+  for (let i = 0; i < 36; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.textContent = starSymbols[Math.floor(Math.random()*starSymbols.length)];
+    s.style.left = Math.random()*100 + 'vw';
+    s.style.top = Math.random()*100 + 'vh';
+    s.style.fontSize = (10 + Math.random()*14) + 'px';
+    s.style.animationDelay = (Math.random()*4) + 's';
+    s.style.color = vividColors[Math.floor(Math.random()*vividColors.length)];
+    sky.appendChild(s);
+  }
+
+  const petalSymbols = ['❁','✿','❀'];
+  for (let i = 0; i < 10; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = petalSymbols[Math.floor(Math.random()*petalSymbols.length)];
+    p.style.left = Math.random()*100 + 'vw';
+    p.style.animationDuration = (14 + Math.random()*10) + 's';
+    p.style.animationDelay = (Math.random()*14) + 's';
+    p.style.fontSize = (12 + Math.random()*10) + 'px';
+    p.style.color = vividColors[Math.floor(Math.random()*vividColors.length)];
+    sky.appendChild(p);
+  }
+
+  const hearts = ['💗','💕','💖','💓','👑','✦'];
+
+  function burst(x, y) {
+    const heart = document.createElement('div');
+    heart.className = 'heart-pop';
+    heart.textContent = hearts[Math.floor(Math.random()*hearts.length)];
+    heart.style.left = x + 'px';
+    heart.style.top = y + 'px';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1300);
+
+    for (let i = 0; i < 7; i++) {
+      const sp = document.createElement('div');
+      sp.className = 'sparkle';
+      sp.textContent = '✦';
+      sp.style.left = x + 'px';
+      sp.style.top = y + 'px';
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 30 + Math.random()*46;
+      sp.style.setProperty('--dx', Math.cos(angle)*dist + 'px');
+      sp.style.setProperty('--dy', Math.sin(angle)*dist + 'px');
+      sp.style.color = ['#e07ba9','#f2a6c9','#d9538a','#d4a259'][Math.floor(Math.random()*4)];
+      document.body.appendChild(sp);
+      setTimeout(() => sp.remove(), 1050);
+    }
+  }
+
+  document.addEventListener('click', (e) => burst(e.clientX, e.clientY));
+  document.addEventListener('touchstart', (e) => {
+    for (const t of e.touches) burst(t.clientX, t.clientY);
+  }, {passive:true});
+</script>
+
+</body>
+</html>
